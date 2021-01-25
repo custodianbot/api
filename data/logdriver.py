@@ -18,13 +18,13 @@ class LogDriver:
         await self.init()
         _id = formatstring("xxxxxx-xxxxxxxxxxxx-xxxxxx")
 
-        await self.pool.set(_id, text, expire=86400 * 14) # Logs expire after 14 days
+        await self.pool.set("logs_" + _id, text, expire=86400 * 14) # Logs expire after 14 days
 
         return _id
 
     async def get_log(self, logid: str):
         await self.init()
-        log = await self.pool.get(logid)
+        log = await self.pool.get("logs_" + logid)
 
         if not log:
             raise HTTPException(404, "Log not found.")
