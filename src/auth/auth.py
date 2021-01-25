@@ -5,6 +5,7 @@ from fastapi import Request
 from fastapi.exceptions import HTTPException
 
 def authenticate(request: Request):
+    """Internally authenticate a request using a static token"""
     token = request.headers.get("X-Api-Token", None)
 
     if not token:
