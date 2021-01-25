@@ -7,4 +7,12 @@ services:
     ports:
       - 80:4342
     environment:
-      LOGS_KEY: abcd
+      API_TOKEN: abcd
+    links:
+      - redis
+
+  redis:
+    image: redis
+    restart: always
+    volumes:
+      - ./redis:/data
