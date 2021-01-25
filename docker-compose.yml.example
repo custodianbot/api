@@ -6,3 +6,5 @@ services:
     restart: always
     ports:
       - 80:4342
+    environment:
+      LOGS_KEY: abcd
